@@ -15,7 +15,7 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm start & npx wait-on https://mitesh411.github.io/MyResume/
+      - run: npm start
       - name: Run pa11y
         run: |
           npm install -g pa11y
