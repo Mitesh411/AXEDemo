@@ -13,7 +13,6 @@ jobs:
         uses: actions/setup-node@v3.4.1
         with:
           node-version: 16
-      - run: npm start
       - name: Run pa11y
         run: |
           npm install -g pa11y
