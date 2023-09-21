@@ -16,4 +16,5 @@ jobs:
       - name: Run pa11y
         run: |
           npm install -g pa11y-ci
-          pa11y https://mitesh411.github.io/MyResume/ 
+          npm install pa11y-reporter-html --save
+          pa11y-ci --reporter=pa11y-reporter-html https://mitesh411.github.io/MyResume/ 
