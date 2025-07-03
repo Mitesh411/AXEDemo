@@ -1,19 +1,40 @@
-name: pa11y
+name: Pa11y Accessibility Check
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
 jobs:
   pa11y:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4.2.2
-      - name: Setup Node.js environment
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4.4.0
         with:
-          node-version: 18
-      - name: Run pa11y
+          node-version: '18'
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Install Pa11y CI locally
+        run: npm install --save-dev pa11y-ci
+
+      - name: Run local server
         run: |
-          npm install -g pa11y-ci
-          pa11y-ci --json
+          npm run start &  # Replace with your project’s server start command
+          sleep 5
+
+      - name: Run Pa11y CI
+        run: npx pa11y-ci --json > pa11y-report.json
+
+      - name: Upload Pa11y report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-report
+          path: pa11y-report.json
