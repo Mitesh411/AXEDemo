@@ -19,18 +19,34 @@ jobs:
         with:
           node-version: '18'
 
-
+      - name: Install dependencies
+        run: npm install
 
       - name: Install Pa11y CI locally
         run: npm install --save-dev pa11y-ci
 
+      - name: Add fallback start script if missing
+        run: |
+          if ! npm run | grep -q "start"; then
+            echo '{ "scripts": { "start": "npx http-server ." } }' > temp-package.json
+            jq -s '.[0] * .[1]' package.json temp-package.json > package.tmp.json
+            mv package.tmp.json package.json
+            rm temp-package.json
+          fi
+
       - name: Run local server
         run: |
-          npm run start &  # Replace with your project’s server start command
+          npm run start &  # Make sure this actually starts your app!
           sleep 5
 
       - name: Run Pa11y CI
         run: npx pa11y-ci --json > pa11y-report.json
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ""
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "false"
+          # Pass Chromium flags for no-sandbox
+          CHROME_PATH: "/usr/bin/google-chrome"
+          PA11Y_CHROMIUM_LAUNCH_ARGS: "--no-sandbox --disable-setuid-sandbox"
 
       - name: Upload Pa11y report as artifact
         uses: actions/upload-artifact@v4
