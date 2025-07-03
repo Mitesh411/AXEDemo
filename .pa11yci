@@ -1,6 +1,9 @@
 {
-    "urls": [
-        "https://pa11y.org/",
-        "https://pa11y.org/contributing"
-    ]
+  "urls": [
+    "https://pa11y.org/",
+    "https://pa11y.org/contributing"
+  ],
+  "chromeLaunchConfig": {
+    "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+  }
 }
