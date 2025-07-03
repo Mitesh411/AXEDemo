@@ -8,9 +8,9 @@ jobs:
   pa11y:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.0.0
+      - uses: actions/checkout@v4.2.2
       - name: Setup Node.js environment
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 18
       - name: Run pa11y
