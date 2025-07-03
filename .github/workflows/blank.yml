@@ -19,8 +19,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install project dependencies
-        run: npm ci
+
 
       - name: Install Pa11y CI locally
         run: npm install --save-dev pa11y-ci
