@@ -8,7 +8,7 @@
     "a11y": "pa11y-ci"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "devDependencies": {
     "http-server": "^14.1.1",

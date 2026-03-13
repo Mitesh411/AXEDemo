@@ -14,6 +14,6 @@ npm run a11y
 
 ### Tooling versions
 
-- Node.js: `>=20`
+- Node.js: `>=22`
 - pa11y-ci: `^4.0.1`
 - http-server: `^14.1.1`
