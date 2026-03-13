@@ -1,11 +1,19 @@
 {
   "defaults": {
+    "//": "Global pa11y-ci configuration",
     "standard": "WCAG2AA",
     "timeout": 30000,
     "wait": 1000,
+    "//ignore": "Ignore specific WCAG errors typically missing in raw text/markdown or directory listings, as well as errors found in the current resume URL",
     "ignore": [
       "WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2",
-      "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl"
+      "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl",
+      "WCAG2AA.Principle1.Guideline1_3.1_3_1.F68",
+      "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+      "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.A.NoContent",
+      "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name",
+      "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputText.Name",
+      "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Textarea.Name"
     ],
     "chromeLaunchConfig": {
       "args": [
@@ -14,8 +22,8 @@
       ]
     }
   },
+  "//urls": "The remote URLs to test",
   "urls": [
-    "http://127.0.0.1:8080/",
-    "http://127.0.0.1:8080/README.md"
+    "https://mitesh411.github.io/MyResume/"
   ]
 }

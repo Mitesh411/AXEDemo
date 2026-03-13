@@ -9,6 +9,9 @@ on:
 jobs:
   pa11y:
     runs-on: ubuntu-latest
+    env:
+      # Opt into Node.js 24 for GitHub Actions to avoid deprecation warnings for actions using Node.js 20.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
