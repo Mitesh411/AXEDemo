@@ -1,9 +1,17 @@
 {
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 1000
+  },
   "urls": [
-    "https://pa11y.org/",
-    "https://pa11y.org/contributing"
+    "http://127.0.0.1:8080/",
+    "http://127.0.0.1:8080/README.md"
   ],
   "chromeLaunchConfig": {
-    "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
   }
 }
